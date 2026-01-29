@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Quarkus Microservices",
+		"description": "API collection for Inventory and Order microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inventory Service",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inventory"
+							]
+						},
+						"description": "Retrieve all products from inventory"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/inventory/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inventory",
+								"1"
+							]
+						},
+						"description": "Get details of a specific product by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Product Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/inventory/1/check?quantity=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inventory",
+								"1",
+								"check"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "2",
+									"description": "Quantity to check"
+								}
+							]
+						},
+						"description": "Check if a product is available in the requested quantity"
+					},
+					"response": []
+				},
+				{
+					"name": "Reserve Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/inventory/1/reserve?quantity=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inventory",
+								"1",
+								"reserve"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "2",
+									"description": "Quantity to reserve"
+								}
+							]
+						},
+						"description": "Reserve a specific quantity of a product"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for the Inventory Service (Port 8082)"
+		},
+		{
+			"name": "Order Service",
+			"item": [
+				{
+					"name": "Create Order - Laptop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"quantity\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Create an order for 2 Laptops. This will trigger communication with Inventory Service."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order - Mouse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 2,\n    \"quantity\": 5\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Create an order for 5 Mice"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order - Keyboard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 3,\n    \"quantity\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Create an order for 1 Keyboard"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order - Custom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"quantity\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Create a custom order - modify the JSON body as needed"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Retrieve all orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders",
+								"1"
+							]
+						},
+						"description": "Get details of a specific order by ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for the Order Service (Port 8081)"
+		},
+		{
+			"name": "Test Scenarios",
+			"item": [
+				{
+					"name": "Scenario: Order Too Many Items",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"quantity\": 100\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Try to order more items than available (should fail)"
+					},
+					"response": []
+				},
+				{
+					"name": "Scenario: Order Non-existent Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 999,\n    \"quantity\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Try to order a product that doesn't exist (should fail)"
+					},
+					"response": []
+				},
+				{
+					"name": "Scenario: Check Product Before Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/inventory/2/check?quantity=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inventory",
+								"2",
+								"check"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Check if Mouse (Product 2) has 10 items available before ordering"
+					},
+					"response": []
+				}
+			],
+			"description": "Test scenarios to verify service behavior"
+		}
+	],
+	"variable": [
+		{
+			"key": "inventory_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "order_url",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
+
+

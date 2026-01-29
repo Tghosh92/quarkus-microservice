@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+          http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <localRepository>${user.home}/.m2/repository</localRepository>
+
+    <interactiveMode>true</interactiveMode>
+    <offline>false</offline>
+
+    <pluginGroups>
+        <pluginGroup>io.quarkus</pluginGroup>
+    </pluginGroups>
+
+    <mirrors>
+        <!-- Example: Uncomment to use a Maven mirror -->
+        <!--
+        <mirror>
+            <id>central-mirror</id>
+            <name>Central Repository Mirror</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        -->
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>quarkus</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Container image building enabled -->
+                <quarkus.container-image.build>true</quarkus.container-image.build>
+
+                <!-- Tests run by default. To skip: add -DskipTests to command -->
+            </properties>
+        </profile>
+    </profiles>
+
+</settings>
+
